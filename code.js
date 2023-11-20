@@ -1,4 +1,5 @@
 function tsp_hk(distance_matrix) {
+    tsp_mems = [];
     if(distance_matrix.length < 1) {
         return 0;
     } else {
@@ -10,23 +11,28 @@ function tsp_hk(distance_matrix) {
 }
 
 function tsp_HeldKarp(distance_matrix, start) {
-    if(distance_matrix.length <= 1) {
-        return 0;
-    } else if(distance_matrix.length == 2) {
-        return distance_matrix[0][1];
-    } else {
-        let min = Infinity;
-        let minI = -1;
-        matrix = matrixShrink(distance_matrix, start)
-        for(let i = 0; i < matrix.length; i++) {
-            temp = tsp_HeldKarp(matrix, i)
-            if(temp < min) {
-                min = temp;
-                minI = i + 1;
+    if(tsp_mems[JSON.stringify(distance_matrix) + start] === undefined) {
+        if(distance_matrix.length <= 1) {
+            return 0;
+        } else if(distance_matrix.length == 2) {
+            return distance_matrix[0][1];
+        } else {
+            let min = Infinity;
+            let minI = -1;
+            matrix = matrixShrink(distance_matrix, start)
+            for(let i = 0; i < matrix.length; i++) {
+                temp = tsp_HeldKarp(matrix, i)
+                if(temp < min) {
+                    min = temp;
+                    minI = i + 1;
+                }
             }
+            tsp_mems[JSON.stringify(distance_matrix) + start] = min + distance_matrix[start][minI];
+            return tsp_mems[JSON.stringify(distance_matrix) + start];
         }
-        return min + distance_matrix[start][minI];
-    }
+    } else {
+            return tsp_mems[JSON.stringify(distance_matrix) + start];
+        }
 }
 
 function matrixShrink(matrix, rowCol) { // Removes a full list from an adjacency matrix
