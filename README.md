@@ -53,3 +53,8 @@ reasoning, to this markdown file.
 The worst-case for the time complexity of this implementation suggests that memoization will never have the opportunity to be used so we will have to do the whole function for every order of nodes. The function for all possible combinations without repetition would be $\Theta(|V|!)$ where $|V|$ is the number of vertices.
 
 The worst-case for the memory complexity is much the same because there would be no repetitions of graphs so we must memoize every unique order of vertices. This would be the same complexity of $\Theta(|V|!)$ where $|V|$ is the number of vertices.
+
+### Sources:
+
+https://sentry.io/answers/remove-specific-item-from-array/
+https://www.freecodecamp.org/news/insert-into-javascript-array-at-specific-index/
