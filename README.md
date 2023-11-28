@@ -50,13 +50,13 @@ reasoning, to this markdown file.
 
 ## Response:
 
-The worst-case for the time complexity of this implementation suggests that memoization will never have the opportunity to be used so we will have to do the whole function for every order of nodes. The function for all possible combinations without repetition would be $\Theta(|V|!)$ where $|V|$ is the number of vertices.
+The worst-case for the time complexity of this implementation suggests that new values will be memoized but similar instances of the function will never reoccur and those memoized values will never have the opportunity to be used so we will have to do the whole function for every order of nodes. The function for all possible combinations without repetition would be $\Theta(|V|!)$ where $|V|$ is the number of vertices.
 
 The worst-case for the memory complexity is much the same because there would be no repetitions of graphs so we must memoize every unique order of vertices. This would be the same complexity of $\Theta(|V|!)$ where $|V|$ is the number of vertices.
 
 ## An aside on memoization in this code:
 
-I struggled with how memoization should work with "start" for some time so I feel that I should comment on the conclusions I came to. I was confused about how nodesLeft and start should be combined for the sake of memoization keys. I figured if we have three nodes "A", "B", and "C" if we give the function "A" as a start and nodesLeft containing "B" and "C" it will return the same thing as if we gave the function "B" as a start and nodesLeft containing "A" and "C". I was trying to decide if I needed to add start into nodesLeft and sort that to simplify the memoization. If we think of the memoization from a more functional perspective with referential transparency, however, though these functions may output the same thing they are different because they have different inputs. Thus, I deemed it unnecessary to combine start and nodesLeft.
+I struggled with how memoization should work with "start" for some time so I feel that I should comment on the conclusions I came to. I was confused about how nodesLeft and start should be combined for the sake of memoization keys. I figured if we have three nodes "A", "B", and "C" if we give the function "A" as a start and nodesLeft containing "B" and "C" it will return the same thing as if we gave the function "B" as a start and nodesLeft containing "A" and "C". This isn't true. If going from any start to the rest of the graph always gave you the same answer, regardless of the start, you would only need to run the program once with a single start. Start and nodesLeft must be kept separate in the memoization.
 
 ### Sources:
 
