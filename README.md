@@ -50,7 +50,7 @@ reasoning, to this markdown file.
 
 ## Response:
 
-The worst-case for the time complexity of this implementation suggests that new values will be memoized but similar instances of the function will never reoccur and those memoized values will never have the opportunity to be used so we will have to do the whole function for every order of nodes. The function for all possible combinations without repetition would be $\Theta(|V|!)$ where $|V|$ is the number of vertices.
+The worst-case for the time complexity of this implementation suggests that new values will be memoized under the current start and nodesLeft but similar instances of the function will never reoccur and those memoized values will never have the opportunity to be used so we will have to do the whole function for every order of start and nodesLeft. The function for all possible combinations without repetition would be $\Theta((|V|)|V|!)$ where $|V|$ is the number of vertices. $|V|!$ to account for all the versions of nodesLeft multiplied by $|V|$ to account for all the options for start.
 
 The worst-case for the memory complexity is much the same because there would be no repetitions of graphs so we must memoize every unique order of vertices. This would be the same complexity of $\Theta(|V|!)$ where $|V|$ is the number of vertices. It is also memoized using start so that needs to be taken into account. Start could be any one of the nodes so we'd multiply all the combinations of nodesLeft by $|V|$ for a final memory complexity of $\Theta((|V|)|V|!)$
 
