@@ -50,7 +50,7 @@ reasoning, to this markdown file.
 
 ## Response:
 
-The worst-case for the time complexity of this implementation suggests that new values will be memoized under the current start and nodesLeft but similar instances of the function will never reoccur and those memoized values will never have the opportunity to be used so we will have to do the whole function for every order of start and nodesLeft. The function for all possible combinations without repetition would be $\Theta((|V|)|V|!)$ where $|V|$ is the number of vertices. $|V|!$ to account for all the versions of nodesLeft multiplied by $|V|$ to account for all the options for start.
+The worst-case for the time complexity of this implementation suggests that new values will be memoized under the current start and nodesLeft but similar instances of the function will never reoccur and those memoized values will never have the opportunity to be used so we will have to do the whole function for every order of start and nodesLeft. The function for all possible combinations without repetition would be $\Theta(|V|2^{|V|-1})$ where $|V|$ is the number of vertices. $2^{|V|-1}$ to account for all the subsets of nodesLeft (one is subtracted from $|V|$ to account for start already being removed from nodesLeft) multiplied by $|V|$ to account for all the options for start.
 
 The worst-case for the memory complexity is much the same because there would be no repetitions of graphs so we must memoize every unique order of vertices. This would be the same complexity of $\Theta(|V|!)$ where $|V|$ is the number of vertices. It is also memoized using start so that needs to be taken into account. Start could be any one of the nodes so we'd multiply all the combinations of nodesLeft by $|V|$ for a final memory complexity of $\Theta((|V|)|V|!)$
 
@@ -63,3 +63,5 @@ I struggled with how memoization should work with "start" for some time so I fee
 https://sentry.io/answers/remove-specific-item-from-array/
 <br>
 https://www.freecodecamp.org/news/insert-into-javascript-array-at-specific-index/
+<br>
+https://byjus.com/maths/subsets/#:~:text=If%20a%20set%20has%20“n,%7D%2C%20and%20%7Bb%7D.
