@@ -30,14 +30,14 @@ function tsp_HeldKarp(distance_matrix, start, nodesLeft) {
 
             for(let i = 0; i < nodesLeft.length; i++) {
                 let tempStart = nodesLeft.splice(i,1)                                        //The splice function here removes one item
-                temp = tsp_HeldKarp(distance_matrix, tempStart, nodesLeft.flat(Infinity))    //from the array at the index and returns
+                temp = distance_matrix[start][tempStart] + tsp_HeldKarp(distance_matrix, tempStart, nodesLeft.flat(Infinity))    //from the array at the index and returns
                 if(temp < min) {                                                             //that item to the tempStart variable
                     min = temp;                                                                                                                                                                                           
                     minI = tempStart;
                 }
                 nodesLeft.splice(i,0,tempStart);                                            //Here, splice is used to reinsert the 
             }                                                                               //tempStart variable back into the array at
-            tsp_mems[JSON.stringify(nodesLeft) + start] = min + distance_matrix[start][minI];//the same point it was removed. For all
+            tsp_mems[JSON.stringify(nodesLeft) + start] = min;//the same point it was removed. For all
             return tsp_mems[JSON.stringify(nodesLeft) + start];                             //recursive calls, the function will receive
         }                                                                                   //a correctly sorted array and anything taken
                                                                                             //out will be added back in at the same 
